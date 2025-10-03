@@ -155,6 +155,20 @@ public class LinkedList {
 //        }
         return slowNode;
     }
+    //CHECK IF THE LINKED LIST HAS A LOOP
+    public boolean hasLoop(LinkedList linkedList){
+        if(linkedList.head == null) return false;
+        Node slowPointer = linkedList.head;
+        Node fastPointer = linkedList.head;
+        while(fastPointer != null && fastPointer.next != null){
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+            if(slowPointer == fastPointer){
+                return true;
+            }
+        }
+        return false;
+    }
     public void getHead(){
         System.out.println("Head: "+head.value);
     }
